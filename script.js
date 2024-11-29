@@ -1,17 +1,19 @@
-const hamburger = document.getElementById('hamburger');
-const menu = document.querySelector('.menu');
-
-hamburger.addEventListener('click', function () {
-    const hamIcon = this.querySelector('.hamburger-icon');
-    const crossIcon = this.querySelector('.cross-icon');
-    if (hamIcon.style.display === "none") {
-        hamIcon.style.display = "inline-block"
-        menu.style.display = "none"
-        crossIcon.style.display = "none"
+let string =" ";
+let buttons = document.querySelectorAll('.button');
+Array.from(buttons).forEach((button)=>{
+  button.addEventListener('click', (e)=>{
+    if(e.target.innerHTML == '='){
+      string = eval(string);
+      document.querySelector('input').value=string;
     }
-    else {
-        crossIcon.style.display = "inline-block"
-        hamIcon.style.display = "none"
-        menu.style.display = "block"
+     else if(e.target.innerHTML == 'C'){
+      string = "";
+      document.querySelector('input').value=string;
     }
-});
+    else{ 
+   console.log(e.target)
+   string= string + e.target.innerHTML;
+   document.querySelector('input').value=string;
+    }
+  })
+})
